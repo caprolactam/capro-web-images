@@ -7,7 +7,12 @@
     "deploy": "wrangler deploy --minify src/index.ts",
     "test": "vitest",
     "lint": "eslint .",
-    "tsc": "tsc -p . --noEmit"
+    "tsc": "tsc -p . --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,css,json,yaml}": "prettier --write"
   },
   "dependencies": {
     "hono": "^4.4.10"
@@ -19,8 +24,11 @@
     "@eslint/compat": "^1.1.0",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint": "^8.56.10",
+    "@vitest/coverage-istanbul": "^1.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
     "typescript": "^5.5.2",
     "vitest": "^1.5.0",

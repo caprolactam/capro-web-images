@@ -4,4 +4,4 @@ compatibility_flags = ["nodejs_compat"]
 
 [[r2_buckets]]
 binding = "BUCKET"
-bucket_name = "foo"
+bucket_name = "capro-web-bucket"

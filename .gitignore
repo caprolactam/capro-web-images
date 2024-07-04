@@ -15,7 +15,6 @@ dist/
 node_modules/
 .wrangler
 worker-configuration.d.ts
-wrangler.toml
 
 # env
 .env
