@@ -1,0 +1,88 @@
+name: 🚀 Deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🔬 Lint
+        run: npm run lint
+
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🔎 Type check
+        run: npm run tsc
+
+  vitest:
+    name: ⚡ Vitest
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: ⚡ Run vitest
+        run: npm run test -- --coverage
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-22.04
+    needs: [lint, typecheck, vitest]
+    # only build/deploy branches on pushes
+    if: ${{ github.event_name == 'push' }}
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '50'
+
+      - name: 🚀 Deploy Production
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}

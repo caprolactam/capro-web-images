@@ -15,7 +15,6 @@ dist/
 node_modules/
 .wrangler
 worker-configuration.d.ts
-wrangler.toml
 
 # env
 .env
@@ -30,6 +29,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+coverage/
 
 # misc
 .DS_Store
