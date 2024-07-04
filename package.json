@@ -10,8 +10,7 @@
     "tsc": "tsc -p . --noEmit"
   },
   "dependencies": {
-    "hono": "^4.4.10",
-    "wasm-image-optimization": "^1.0.1"
+    "hono": "^4.4.10"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.4.8",
