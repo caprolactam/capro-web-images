@@ -1,0 +1,7 @@
+name="capro-web-images"
+compatibility_date = "2024-06-27"
+compatibility_flags = ["nodejs_compat"]
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "foo"

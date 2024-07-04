@@ -1,0 +1,33 @@
+{
+  "name": "capro-web-images",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "start": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "test": "vitest",
+    "lint": "eslint .",
+    "tsc": "tsc -p . --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.4.10",
+    "wasm-image-optimization": "^1.0.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.4.8",
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "@epic-web/config": "^1.11.2",
+    "@eslint/compat": "^1.1.0",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/eslint": "^8.56.10",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2",
+    "vitest": "^1.5.0",
+    "wrangler": "^3.63.0"
+  },
+  "engines": {
+    "node": "20.15.0"
+  }
+}
