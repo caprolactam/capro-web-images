@@ -1,7 +1,6 @@
 name="capro-web-images"
 main = "src/index.ts"
-compatibility_date = "2024-06-27"
-compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2024-10-14"
 minify = true
 
 [[r2_buckets]]
