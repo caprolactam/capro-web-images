@@ -13,12 +13,4 @@ export default [
   ...defaultConfig,
   eslintConfigPrettier,
   includeIgnoreFile(gitignorePath),
-  // add custom config objects here:
-  // TODO: should delete this. current: TypeError: context.getSource is not a function
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    rules: {
-      'react-hooks/exhaustive-deps': 'off',
-    },
-  },
 ]
